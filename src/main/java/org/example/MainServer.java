@@ -9,14 +9,21 @@ public class MainServer {
 
     public MainServer() {
         tomcat = new Tomcat();
+        //lager en instans av tomcat
         tomcat.setPort(8080);
+        //setter porten der tomcat ser etter httpReq
         tomcat.getConnector();
 
+
         Context rootContext = tomcat.addContext("", null);
+
 
         Tomcat.addServlet(rootContext, "AnagramServlet", new AnagramServlet());
         rootContext.addServletMappingDecoded("/anagram", "AnagramServlet");
 
+
+        Tomcat.addServlet(rootContext, "IdkServlet", new IdkServlet());
+        rootContext.addServletMappingDecoded("/idk", "IdkServlet");
 
         try {
             tomcat.start();

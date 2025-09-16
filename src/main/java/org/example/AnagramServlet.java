@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AnagramServlet extends HttpServlet {
 
         @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
             var word = req.getParameter("word");
             var result = new AnagramFinder().findAnagrams(word);
             resp.setContentType("text/html");
@@ -21,4 +21,10 @@ public class AnagramServlet extends HttpServlet {
             writer.println("</ul>");
         }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var writer = resp.getWriter();
+        //for å skrive noe må jeg ha en writer
+        writer.println("<div> bitch </div>");
     }
+}
